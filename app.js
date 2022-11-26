@@ -4,6 +4,10 @@ const blogRouter = require("./routes/BlogRoutes");
 
 const app = express();
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({ path: './connectionString.env' });
+}
+
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +29,8 @@ mongoose.connect(
   }
 );
 
-app.listen(3001, () => {
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 

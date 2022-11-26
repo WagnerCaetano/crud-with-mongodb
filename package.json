@@ -2,10 +2,15 @@
   "name": "Nodejs_CRUD",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "node app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000",
+    "heroku": "heroku local web",
+    "heroku-cli": "heroku"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +22,7 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "dotenv": "^16.0.3",
     "mocha": "^10.0.0",
     "should": "^13.2.3",
     "supertest": "^6.2.3"
