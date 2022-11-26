@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const blogRouter = require("./routes/BlogRoutes");
+const ParticipantsRouter = require("./routes/ParticipantsRoutes");
+const ParticipantsService = require("./services/ParticipantsService");
 
 const app = express();
 
@@ -10,8 +11,7 @@ if (process.env.NODE_ENV !== "production") {
 
 //middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/api/blogs", blogRouter);
+app.use("/api/Participants", ParticipantsRouter);
 
 //configure mongoose
 mongoose.connect(
@@ -33,5 +33,22 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+// setup
+ParticipantsService.getAllParticipants().then(participants => {
+  if (participants.length === 0) {
+    ParticipantsService.setup().then(res => {});
+  } else {
+    ParticipantsService.deleteParticipants().then(res => {});
+  }
+});
+
+//setTimeout(() => {
+//  ParticipantsService.putParticipants("roberto").then(participants => {});
+//}, 3000);
+
+// setTimeout(() => {
+//   ParticipantsService.deleteParticipants().then(participants => console.log(participants));
+// }, 9000);
 
 module.exports = app;

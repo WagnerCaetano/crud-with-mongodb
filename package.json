@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha --timeout 10000",
-    "heroku": "heroku local web",
+    "heroku": "heroku local -p 7000",
     "heroku-cli": "heroku"
   },
   "engines": {
