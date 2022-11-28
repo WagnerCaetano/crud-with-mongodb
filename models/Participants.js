@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const ParticipantsSchema = new Schema({
   participants: Array,
-  name: String,
-  status: String
+  name: String
 });
 
 module.exports = mongoose.model("Participants", ParticipantsSchema);
