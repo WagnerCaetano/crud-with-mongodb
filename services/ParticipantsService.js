@@ -17,7 +17,7 @@ exports.putParticipants = async (participant) => {
 exports.putWinner = async (winner) => {
   const actual = await this.getAllParticipants();
 
-  return await ParticipantsModel.findByIdAndUpdate(actual[0]._doc._id, { ...actual[0]._doc, name: winner });
+  return await ParticipantsModel.findByIdAndUpdate(actual[0]._doc._id, { ...actual[0]._doc, name: winner, status: 'sorteado' });
 };
 
 exports.deleteParticipants = async () => {
